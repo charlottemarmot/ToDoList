@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var showNewTask = false
     @Query var toDos: [ToDoItem]
     
+    
     var body: some View {
         VStack {
             HStack{
@@ -34,14 +35,16 @@ struct ContentView: View {
             
             List{//Displays list of tasks
                 ForEach(toDos){ ToDoItem in
-                    Text (ToDoItem.title)
+                    Text ("‼️" + ToDoItem.title)
+                } else {
+                    Text(toDoItem.title)
                 }
                 
             }
             
             
             if showNewTask {
-                New_To_Do()
+                New_To_Do(toDoItem: ToDoItem(title: "", isImportant: false))
             }
         }//end of the VStack
         .padding()
